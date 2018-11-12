@@ -46,7 +46,7 @@ Une version légère de SQL
 
 Vous le trouverez dans le dossier [./chinook](./chinook)
 
-Voir le [diagramme](http://www.sqlitetutorial.net/wp-content/uploads/2018/03/sqlite-sample-database-diagram-color.pdf)
+![diagramme](./chinook/chinook-diagram.png)
 
 
 ###  Installer SQLite serveur
