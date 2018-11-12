@@ -180,7 +180,7 @@ AND milliseconds > 250000;
 INSERT INTO artists (name) VALUES ('PNL');
 ```
 
-### Vérifier que cela est marché
+### Vérifier que cela ait marché
 
 ```
 SELECT artistid, name FROM artists ORDER BY artistid DESC LIMIT 1;
