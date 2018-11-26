@@ -44,7 +44,7 @@ Une version légère de SQL
 
 ### Exemple: la base de données Chinook
 
-Vous le trouverez dans le dossier [./chinook](./chinook)
+Télécharger le fichier de [base de données Chinook](./chinook/chinook.db)
 
 ![diagramme](./chinook/chinook-diagram.png)
 
