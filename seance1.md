@@ -169,7 +169,7 @@ AND milliseconds > 250000;
 - compter le nombre d'artistes
 - afficher toutes les chansons d'un seul artiste
 - compter le nombre de chansons de cet artiste
-- compter combien de chansons de moins de trois minutes
+- compter combien de chansons dure moins de trois minutes
 - ...
 
 ## 5. Pratique : Ecrire de nouvelles infos
