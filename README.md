@@ -4,7 +4,6 @@ ENSSIB, 2018
 
 ### Les séances
 
-- Séance 1 : Les Bases - [19 Novembre](./seance1.md)
-- Séance 2 : Construire un Modèle - 26 Novembre
-- Séance 3 : API et interfaces - 3 Décembre
-- Séance 4 : réaliser votre application - 10 Décembre
+- Séance 1 : Les Bases + SQLite - [19 Novembre](./seance1.md)
+- Séance 2 : Python/SQLite + Construire un Schéma - [26 Novembre](./seance2.md)
+- Séance 3 : Peewee + Application de Données - 3 Décembre
