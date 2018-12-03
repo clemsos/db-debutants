@@ -15,6 +15,7 @@ Notre objectif pour la suite du cours : construire un système d'information pou
 
 ### Les étapes de la conception à la réalisation
 
+Pourquoi concevoir une application ?  
 Listons ensemble les étapes
 
 ### Construire un prototype
@@ -240,3 +241,13 @@ Vous devez
 1. définir le modèle conceptuel sur lequel reposera votre schéma (structure, terminologie, etc)
 2. utiliser une base de données SQL pour constuire un prototype de votre modèle
 3. présenter vos résultats au musée.
+
+### Quels outils sont les plus adaptés?
+
+Il existe de très nombreux outils pour construire des schémas SQL (logiciels, appli en ligne, etc ) répondant aux besoins multiples de conception d'application possédant des bases de données.
+
+Pour cette fois, commençons avec quelque chose de simple :
+
+1. le schéma : papier + crayon
+2. bases de données et modèle : Python + SQlite
+3. constuire des exemples de requête
