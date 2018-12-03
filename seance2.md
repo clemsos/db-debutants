@@ -168,6 +168,11 @@ db.execute(''' DELETE from shoes WHERE ID = 1 ''')
 
 Nous allons désormais utiliser Python pour manipuler la base de données Chinook du [cours précédent](./seance1).
 
+```python
+import sqlite3
+conn = sqlite3.connect('chinook.db')
+```
+
 
 ### Lire des données
 
@@ -203,9 +208,44 @@ Qu'est-ce qu'un fichier CSV?
 Comment est-t-il structuré (headers, séparateurs, etc.)
 
 
-#### L'import de CSV avec Python
+### L'import de CSV avec Python
 
 La librairie [`csv`](https://docs.python.org/fr/3/library/csv.html) de Python permet d'importer des données.
+
+Vous trouverez tous ces exemples dans le dossier [`./music`](https://github.com/clemsos/db-debutants/tree/master/music)
+
+#### Compter le nombre de lignes dans le fichier
+
+```python
+import csv
+
+with open('music.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    line_count = 0
+    for row in csv_reader:
+        line_count = line_count + 1
+
+print "Il y a %s lignes dans ce fichier"%line_count
+```
+
+#### Lister le nom des colonnes
+
+Le nom des champs se trouvent sur la première colonne.
+
+```python
+with open('music.csv') as csv_file:
+
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    line_count = 0
+
+    for row in csv_reader:
+        if line_count == 0 :
+            print row # afficher la premiere colonne
+
+        line_count = line_count +1
+```
+
+#### Lister le nom des artistes
 
 ```python
 import csv
@@ -215,9 +255,30 @@ with open('music.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
 
     for row in csv_reader:
-        print row["artist.name"]
-
-print "Il y a %s lignes dans ce fichier"%line_count
+        print row[2]
 ```
 
-Vous trouverez davantage d'exemples dans le dossier [`./music`](https://github.com/clemsos/db-debutants/tree/master/music)
+#### Importer les données dans la base Chinook
+
+A vous de jouer !
+
+```python
+import csv
+import sqlite3
+
+conn = sqlite3.connect('example.db')
+print 'Database connectée'
+
+with open('music.csv') as csv_file:
+
+    csv_reader = csv.reader(csv_file, delimiter=',')
+
+    for row in csv_reader:
+        artist_name = row[2]
+
+    # insert artist name into artists tables
+
+
+db.close()
+print 'Database fermée'
+```
