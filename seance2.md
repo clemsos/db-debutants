@@ -163,3 +163,61 @@ db.execute(''' DELETE from shoes WHERE ID = 1 ''')
   db.commit()
   print 'Deleted'
 ```
+
+## Exercices : manipuler une base de données avec Python
+
+Nous allons désormais utiliser Python pour manipuler la base de données Chinook du [cours précédent](./seance1).
+
+
+### Lire des données
+
+Ecrire des scripts Python pour répondre aux questions précédentes :
+
+- afficher la liste unique des artistes
+- compter le nombre d'artistes
+- compter combien de chansons qui dure moins de trois minutes
+- afficher toutes les chansons d'un seul artiste
+- compter le nombre de chansons de cet artiste
+- ...
+
+### Importer des données
+
+Il existe de nombreuses bases de données musicales, comme le [Million Song Dataset](https://labrosa.ee.columbia.edu/millionsong/)
+ou même directement l'API de [Spotify](https://developer.spotify.com/community/showcase/musical-data/). Voir une liste  sur [liste plus complète](https://en.wikipedia.org/wiki/List_of_online_music_databases) sur Wikipedia.
+
+
+Nous allons tenter d'importer [un échantillon](https://think.cs.vt.edu/corgis/csv/music/music.html) du Million Song Dataset dans notre base de données en utilisant un script Python.
+
+Voici les étapes :
+
+1. télécharger le [jeu de données](https://think.cs.vt.edu/corgis/csv/music/music.html)
+2. lire les partie intéressantes (chansons, auteurs, titres d'albums)
+3. les inscrire dans notre base de données.
+
+
+#### Le jeu de données
+
+Le fichier CSV nommé `music.csv` contient 10000 enregistrements.
+
+Qu'est-ce qu'un fichier CSV?  
+Comment est-t-il structuré (headers, séparateurs, etc.)
+
+
+#### L'import de CSV avec Python
+
+La librairie [`csv`](https://docs.python.org/fr/3/library/csv.html) de Python permet d'importer des données.
+
+```python
+import csv
+
+with open('music.csv') as csv_file:
+
+    csv_reader = csv.reader(csv_file, delimiter=',')
+
+    for row in csv_reader:
+        print row["artist.name"]
+
+print "Il y a %s lignes dans ce fichier"%line_count
+```
+
+Vous trouverez davantage d'exemples dans le dossier [`./music`](https://github.com/clemsos/db-debutants/tree/master/music)

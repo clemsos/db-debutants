@@ -88,4 +88,4 @@ Pour cette fois, commençons avec quelque chose de simple :
 
 1. le schéma : papier + crayon
 2. bases de données et modèle : Python + SQlite
-3. constuire des exemples de requête
+3. construire des exemples de requête
