@@ -42,7 +42,7 @@ Voici les étapes :
 2. lire les partie intéressantes (chansons, auteurs, titres d'albums)
 3. les inscrire dans notre base de données.
 
-### Importer les artistes
+### Importer les artistes du CSV dans Chinook
 
 A vous de jouer !
 
@@ -121,7 +121,7 @@ with open('test.csv', "wb") as csv_file:
         writer.writerow(line)
 ```
 
-## Exercice: Exporter vers un fichier CSV
+## Exercice: Exporter les morceaux durant moins d'une minute vers un fichier CSV
 
 Vous allez maintenant devoir exporter toutes les chansons de moins d'une minute contenues dans la base de données Chinook vers un fichier CSV.
 
