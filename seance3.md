@@ -2,8 +2,13 @@
 
 ## Révisions du vocabulaire
 
-- quels programmes avons-nous utilisés?
-- quels concepts / mots nouveaux ?
+Qu'avons-nous utilisé ?
+
+- programmes
+- languages
+- concepts / mots nouveaux
+
+
 
 
 ## Lire un fichier CSV
