@@ -66,7 +66,7 @@ with open('music.csv') as csv_file:
     for row in csv_reader:
         artist_name = row[2]
 
-    # insert artist name into artists tables
+        # insert artist name into artists tables
 
 
 db.close()
