@@ -121,9 +121,6 @@ with open('test.csv', "wb") as csv_file:
         writer.writerow(line)
 ```
 
-
-
-
 ## Exercice: Exporter vers un fichier CSV
 
 Vous allez maintenant devoir exporter toutes les chansons de moins d'une minute contenues dans la base de données Chinook vers un fichier CSV.
@@ -136,16 +133,8 @@ import sqlite3
 conn = sqlite3.connect('chinook.db')
 print 'Database connectée'
 
-with open('music.csv') as csv_file:
+# 1. read data from database
 
-    csv_reader = csv.reader(csv_file, delimiter=',')
+# 2. write CSV file
 
-    for row in csv_reader:
-        artist_name = row[2]
-
-    # insert artist name into artists tables
-
-
-db.close()
-print 'Database fermée'
 ```
