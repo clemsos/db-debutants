@@ -8,9 +8,6 @@ Qu'avons-nous utilisé ?
 - languages
 - concepts / mots nouveaux
 
-
-
-
 ## Lire un fichier CSV
 
 Vous trouverez tous ces exemples dans le dossier [`./music`](https://github.com/clemsos/db-debutants/tree/master/music)
@@ -102,7 +99,7 @@ with open('test.csv', "wb") as csv_file:
         writer.writerow(line)
 ```
 
-## Exercice: Exporter les morceaux durant moins d'une minute vers un fichier CSV
+### Exercice: Exporter les morceaux durant moins d'une minute vers un fichier CSV
 
 Vous allez maintenant devoir exporter toutes les chansons de moins d'une minute contenues dans la base de données Chinook vers un fichier CSV.
 
