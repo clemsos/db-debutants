@@ -1,5 +1,11 @@
 # Importer / Exporter des données
 
+## Révisions du vocabulaire
+
+- quels programmes avons-nous utilisés?
+- quels concepts / mots nouveaux ?
+
+
 ## Lire un fichier CSV
 
 Vous trouverez tous ces exemples dans le dossier [`./music`](https://github.com/clemsos/db-debutants/tree/master/music)
@@ -42,7 +48,7 @@ Voici les étapes :
 2. lire les partie intéressantes (chansons, auteurs, titres d'albums)
 3. les inscrire dans notre base de données.
 
-### Importer les artistes du CSV dans Chinook
+### Exercice : importer les artistes du CSV dans Chinook
 
 A vous de jouer !
 
@@ -67,44 +73,14 @@ db.close()
 print 'Database fermée'
 ```
 
-### Une réponse possible
-
-```python
-# -*- coding: utf-8 -*-
-import csv
-import sqlite3
-
-db = sqlite3.connect('../chinook/chinook.db')
-print 'Database connectée'
-
-with open('music.csv') as csv_file:
-
-    csv_reader = csv.reader(csv_file, delimiter=',')
-
-    for i, row in enumerate(csv_reader):
-        if i != 0:
-            artist_name = row[2]
-
-            # see https://stackoverflow.com/questions/36765835/inserting-text-having-single-quote-in-sqlite-database
-            requete = ''' INSERT INTO artists (name) VALUES (?); '''
-
-            # insert artist name into artists tables
-            db.execute(requete, (artist_name,))
-
-    db.commit()
-
-db.close()
-print 'Database fermée'
-```
-
-Autre possibilité expliquée sur [Stack Overflow](https://stackoverflow.com/questions/2887878/importing-a-csv-file-into-a-sqlite3-database-table-using-python).
-
 
 ## Ecrire dans un fichier CSV
 
 
 La librairie [`csv`](https://docs.python.org/fr/3/library/csv.html) de Python sert aussi à écrire des fichiers CSV.
 
+
+## Exemple d'écriture d'un CSV avec Python
 
 ```python
 import csv
