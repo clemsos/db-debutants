@@ -1,91 +1,151 @@
-# Construire une application de base de données
+# Importer / Exporter des données
 
+## Lire un fichier CSV
 
-## Le Musée de la Chaussure
+Vous trouverez tous ces exemples dans le dossier [`./music`](https://github.com/clemsos/db-debutants/tree/master/music)
 
-Notre objectif pour la suite du cours : construire un système d'information pour le [Musée de la Chaussure](https://www.museedelachaussure.fr/).
+### Le fichier de données
 
-![](https://4.bp.blogspot.com/-6wOGSeo4sx0/Vrd1FyFBN7I/AAAAAAAAFPk/Zefp4GC2W9Y/s1600/z.musee_.chaussure.romans.jpg)
+Nous allons utiliser [un échantillon](https://think.cs.vt.edu/corgis/csv/music/music.html) du Million Song Dataset.
 
-### Les étapes de la conception à la réalisation
+Comment est-t-il structuré (headers, séparateurs, etc.)
 
-Pourquoi concevoir une application ?  
-Listons ensemble les étapes
+## Lire un fichier CSV
 
-### Construire un prototype
+La librairie [`csv`](https://docs.python.org/fr/3/library/csv.html) de Python sert à lire des fichiers de données.
 
-Pourquoi réaliser un prototype ?  
-Python et SQLite
-
-### Définir un schéma
-
-#### sqlite
-```sql
-sqlite> CREATE TABLE Users(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT);
-```
-
-#### Python sqlite3
+### Compter le nombre de lignes dans le fichier
 
 ```python
+import csv
+
+with open('music.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    line_count = 0
+    for row in csv_reader:
+        line_count = line_count + 1
+
+print "Il y a %s lignes dans ce fichier"%line_count
+```
+
+Le fichier CSV nommé `music.csv` contient 10000 enregistrements.
+
+## Importer un CSV dans une base de données
+
+Nous allons maintenant importer le fichier `music.csv` dans la base de données `chinook.db` en utilisant un script Python.
+
+### Les étapes
+
+Voici les étapes :
+
+1. télécharger le [jeu de données](https://think.cs.vt.edu/corgis/csv/music/music.html)
+2. lire les partie intéressantes (chansons, auteurs, titres d'albums)
+3. les inscrire dans notre base de données.
+
+### Importer les artistes
+
+A vous de jouer !
+
+```python
+import csv
 import sqlite3
-conn = sqlite3.connect('users.db')
-cur = conn.cursor()
 
-cur.execute('CREATE TABLE Users(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT)')
+conn = sqlite3.connect('chinook.db')
+print 'Database connectée'
 
+with open('music.csv') as csv_file:
+
+    csv_reader = csv.reader(csv_file, delimiter=',')
+
+    for row in csv_reader:
+        artist_name = row[2]
+
+    # insert artist name into artists tables
+
+
+db.close()
+print 'Database fermée'
 ```
 
-#### Python Peewee (autre librairie)
+### Une réponse possible
 
 ```python
-from peewee import *
+# -*- coding: utf-8 -*-
+import csv
+import sqlite3
 
-db = SqliteDatabase('users.db')
+db = sqlite3.connect('../chinook/chinook.db')
+print 'Database connectée'
 
-class User(Model):
-	username = TextField()
-	email = CharField(max_length=255, unique=True)
+with open('music.csv') as csv_file:
 
-db.create_tables([User], safe=True)
+    csv_reader = csv.reader(csv_file, delimiter=',')
+
+    for i, row in enumerate(csv_reader):
+        if i != 0:
+            artist_name = row[2]
+
+            # see https://stackoverflow.com/questions/36765835/inserting-text-having-single-quote-in-sqlite-database
+            requete = ''' INSERT INTO artists (name) VALUES (?); '''
+
+            # insert artist name into artists tables
+            db.execute(requete, (artist_name,))
+
+    db.commit()
+
+db.close()
+print 'Database fermée'
 ```
 
-## Enoncé: le prototype du catalogue du Musée de la Chaussure
+Autre possibilité expliquée sur [Stack Overflow](https://stackoverflow.com/questions/2887878/importing-a-csv-file-into-a-sqlite3-database-table-using-python).
 
-### L'objectif
 
-Vous devez produire un schéma de base de données pour le catalogue du [Musée de la Chaussure](https://www.museedelachaussure.fr). Ce schéma fait partie de l'application utilisée par les gestionnaires du musée.
+## Ecrire dans un fichier CSV
 
-L'application doit permettre de :
 
-- lire des infos détaillées sur chaque pièce
-  - titre
-  - époque, provenance
-  - photo
-  - etc.
-- localiser la pièce dans les collections
-  - nom de la collection
-  - emplacement physique (allée, étagère, etc)
-- connaître le status actuel de l'inventaire
-  - pièce exposée
-  - prétée
-  - en réparation
-  - etc.
-- constituer ou consulter des listes d'oeuvres (notamment pour les expositions)
+La librairie [`csv`](https://docs.python.org/fr/3/library/csv.html) de Python sert aussi à écrire des fichiers CSV.
 
-### Comment faire ?
 
-Vous devez
+```python
+import csv
 
-1. définir le modèle conceptuel sur lequel reposera votre schéma (structure, terminologie, etc)
-2. utiliser une base de données SQL pour constuire un prototype de votre modèle
-3. présenter vos résultats au musée.
+data = [
+  [ "avril", 1 ],
+  [ "mai", 4 ],
+  [ "juin", 3 ]
+]
 
-### Quels outils sont les plus adaptés?
+with open('test.csv', "wb") as csv_file:
+    writer = csv.writer(csv_file, delimiter=',')
+    for line in data:
+        writer.writerow(line)
+```
 
-Il existe de très nombreux outils pour construire des schémas SQL (logiciels, appli en ligne, etc ) répondant aux besoins multiples de conception d'application possédant des bases de données.
 
-Pour cette fois, commençons avec quelque chose de simple :
 
-1. le schéma : papier + crayon
-2. bases de données et modèle : Python + SQlite
-3. construire des exemples de requête
+
+## Exercice: Exporter vers un fichier CSV
+
+Vous allez maintenant devoir exporter toutes les chansons de moins d'une minute contenues dans la base de données Chinook vers un fichier CSV.
+
+
+```python
+import csv
+import sqlite3
+
+conn = sqlite3.connect('chinook.db')
+print 'Database connectée'
+
+with open('music.csv') as csv_file:
+
+    csv_reader = csv.reader(csv_file, delimiter=',')
+
+    for row in csv_reader:
+        artist_name = row[2]
+
+    # insert artist name into artists tables
+
+
+db.close()
+print 'Database fermée'
+```

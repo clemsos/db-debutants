@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv
 import sqlite3
-from json import dumps
 
 db = sqlite3.connect('../chinook/chinook.db')
 print 'Database connectée'
@@ -13,8 +12,6 @@ with open('music.csv') as csv_file:
     for i, row in enumerate(csv_reader):
         if i != 0:
             artist_name = row[2]
-
-            encoded = dumps(artist_name)
 
             # see https://stackoverflow.com/questions/36765835/inserting-text-having-single-quote-in-sqlite-database
             requete = ''' INSERT INTO artists (name) VALUES (?); '''
