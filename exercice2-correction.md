@@ -32,7 +32,7 @@ print "-"*10
 print "%s chansons dans la base de données"%len(short_songs)
 
 # 2. write CSV file
-column_names = ["TrackId", "Name", "AlbumId", "Albu", "MediaTypeId", "GenreId", "Composer", "Milliseconds", "Bytes", "UnitPric"]
+column_names = ["TrackId", "Name", "AlbumId", "Albu", "MediaTypeId", "GenreId", "Composer", "Milliseconds", "Bytes", "UnitPrice"]
 
 with open('short_songs.csv', "wb") as csv_file:
     writer = csv.writer(csv_file, delimiter=',')

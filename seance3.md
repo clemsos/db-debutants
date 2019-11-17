@@ -50,7 +50,26 @@ print "Il y a %s lignes dans ce fichier"%line_count
 # Le fichier CSV nommé `music.csv` contient 10000 enregistrements.
 ```
 
-## EXERCICE: Importer un CSV dans une base de données
+### Ecrire un fichier CSV
+
+La librairie [`csv`](https://docs.python.org/fr/3/library/csv.html) de Python permet aussi d'écrire des fichiers CSV.
+
+```python
+import csv
+
+data = [
+  [ "avril", 1 ],
+  [ "mai", 4 ],
+  [ "juin", 3 ]
+]
+
+with open('test.csv', "wb") as csv_file:
+    writer = csv.writer(csv_file, delimiter=',')
+    for line in data:
+        writer.writerow(line)
+```
+
+## EXERCICE 1: Importer un CSV dans une base de données
 
 Nous allons maintenant importer le fichier `music.csv` dans la base de données `chinook.db` en utilisant un script Python.
 
@@ -62,7 +81,7 @@ Voici les étapes :
 2. lire les partie intéressantes (chansons, auteurs, titres d'albums)
 3. les inscrire dans notre base de données.
 
-### Exercice : importer les artistes du CSV dans Chinook
+### A vous: importer les artistes du fichier CSV dans Chinook
 
 Exemple
 
@@ -90,27 +109,6 @@ print 'Database fermée'
 A vous de jouer !
 
 
-## EXERCICE: Sauvegarder des données depuis la base vers un fichier CSV
-
-La librairie [`csv`](https://docs.python.org/fr/3/library/csv.html) de Python permet aussi d'écrire des fichiers CSV.
-
-
-## Exemple d'écriture d'un CSV avec Python
-
-```python
-import csv
-
-data = [
-  [ "avril", 1 ],
-  [ "mai", 4 ],
-  [ "juin", 3 ]
-]
-
-with open('test.csv', "wb") as csv_file:
-    writer = csv.writer(csv_file, delimiter=',')
-    for line in data:
-        writer.writerow(line)
-```
 
 ## EXERCICE: Exporter les morceaux durant moins d'une minute vers un fichier CSV
 
