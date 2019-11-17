@@ -183,4 +183,4 @@ Ecrire des scripts Python pour répondre aux questions précédentes :
 - compter le nombre de chansons de cet artiste
 
 
-SUITE: Essayer maintenant d'[importer de nouvelles chansons depuis un fichier](/seance3)
+SUITE: Essayer maintenant d'[importer de nouvelles chansons depuis un fichier](./seance3)
