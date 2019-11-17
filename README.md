@@ -1,9 +1,9 @@
 # Base de Données
 
-ENSSIB, 2018
+ENSSIB, 2018-2019
 
-### Les séances
+Objectif de la séance :
 
-- Séance 1 : Les Bases + SQLite - [19 Novembre](./seance1.md)
-- Séance 2 : Python/SQLite + Construire un Schéma - [26 Novembre](./seance2.md)
-- Séance 3 : Peewee + Application de Données - 3 Décembre
+1. Appréhender le language SQL grâce à la bases de données SQLite - [1ere partie](./seance1.md)
+2. Interagir avec SQLite grâce à Python - [2eme Partie](./seance2.md)
+3. Peewee - créer une application de Données - [3eme Partie](./seance3.md)
