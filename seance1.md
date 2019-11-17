@@ -208,4 +208,4 @@ WHERE
  artistid = 1;
 ```
 
-**Bonus** : tester [SQLite Browser](https://sqlitebrowser.org/)
+SUITE : essayons désormais d'[interagir avec Python](./seance2)
