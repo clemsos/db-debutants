@@ -19,9 +19,21 @@ Nous allons utiliser le jeu de données [Million Song Dataset](http://millionson
 Télécharger [un échantillon](./music/music.csv).  
 Comment est-t-il structuré (headers, séparateurs, etc.) ?
 
-## Lire un fichier CSV
+### Ouvrir un fichier CSV avec Python
 
 La librairie [`csv`](https://docs.python.org/fr/3/library/csv.html) de Python sert à lire des fichiers de données.
+
+```python
+import csv
+
+# ouvrir le fichier
+with open('music.csv') as csv_file:
+    # lire les données au formart csv
+    csv_reader = csv.reader(csv_file, delimiter=',')
+
+    for row in csv_reader:
+        print(row)
+```
 
 ### Compter le nombre de lignes dans le fichier
 
@@ -35,9 +47,8 @@ with open('music.csv') as csv_file:
         line_count = line_count + 1
 
 print "Il y a %s lignes dans ce fichier"%line_count
+# Le fichier CSV nommé `music.csv` contient 10000 enregistrements.
 ```
-
-Le fichier CSV nommé `music.csv` contient 10000 enregistrements.
 
 ## Importer un CSV dans une base de données
 
